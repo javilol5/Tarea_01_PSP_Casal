@@ -14,6 +14,10 @@
 ![Ejecución de programa por terminal 1](capturas/cap4.png)
 ![Ejecución de programa por terminal 2](capturas/cap5.png)
 
+**Ejecucion de programa desde la Terminal con `java -Xmx128m`
+![Ejecución de programa por terminal 1 con -Xmx128m](capturas/cap7.png)
+![Ejecución de programa por terminal 2 con -Xmx128m](capturas/cap8.png)
+
 **Localización del proceso en espera desde otra terminal:**
 ![Localizar programa en espera](capturas/cap3.png)
 
