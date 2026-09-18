@@ -51,16 +51,48 @@ public class InformeSistema {
         String sSeparador = System.getProperty("file.separator");
         String sRuta = System.getProperty("user.home");
 
-
-
-
-
         System.out.println("SISTEMA");
         System.out.println("=".repeat(33));
         System.out.println("os.name:        " + sOperativo);
         System.out.println("file.separator: \"" + sSeparador + "\"");
         System.out.println("Ruta construida con las propiedades:");
         System.out.println(sRuta + sSeparador + "InformeSistema.java");
+        System.out.println();
+
+        String javaVersion = System.getProperty("java.version");
+        String javaVersionDate = System.getProperty("java.version.date");
+        String osArch = System.getProperty("os.arch");
+        String osName = System.getProperty("os.name");
+        String osVersion = System.getProperty("os.version");
+        String userCountry = System.getProperty("user.country");
+        String userDir = System.getProperty("user.dir");
+        String userHome = System.getProperty("user.home");
+        String userLanguage = System.getProperty("user.language");
+        String userName = System.getProperty("user.name");
+
+        System.out.println("PROPIEDADES QUE EMPIEZAN POR os., user., java.version");
+        System.out.println("=".repeat(33));
+        System.out.println("java.version = " + javaVersion);
+        System.out.println("java.version.date = " + javaVersionDate);
+        System.out.println("os.arch = " + osArch);
+        System.out.println("os.name = " + osName);
+        System.out.println("os.version = " + osVersion);
+        System.out.println("user.country = " + userCountry);
+        System.out.println("user.dir = " + userDir);
+        System.out.println("user.home = " + userHome);
+        System.out.println("user.language = " + userLanguage);
+        System.out.println("user.name = " + userName);
+        System.out.println();
+
+        System.out.println("PROCESO EN ESPERA");
+        System.out.println("=".repeat(33));
+        System.out.println("Buscame desde otra terminal con:");
+        System.out.println("ps -ef | grep InformeSistema");
+        System.out.println("Pulsa INTRO para terminar...");
+        System.out.println("Fin del programa.");
+
+
+
 
 
     }
