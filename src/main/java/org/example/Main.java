@@ -1,6 +1,8 @@
-import org.example.InformeSistema;
+package org.example;
 
-public static void main(String[] args) {
+public class Main {
+
+    public static void main(String[] args) {
 
     InformeSistema app = new InformeSistema();
     app.procesadores();
@@ -9,4 +11,5 @@ public static void main(String[] args) {
     app.propiedades();
     app.procesoEspera();
 
+    }
 }
