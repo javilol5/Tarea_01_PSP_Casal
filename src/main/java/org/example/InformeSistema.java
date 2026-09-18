@@ -1,35 +1,54 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class InformeSistema {
+
     public static void main(String[] args) {
+
+        procesadores();
+        memoria();
+        sistema();
+        propiedades();
+        procesoEspera();
+
+    }
+
+    public static void procesadores() {
 
         Runtime runtime = Runtime.getRuntime();
 
-
-
         int procesadores = runtime.availableProcessors();
-
-        long mTotal = runtime.totalMemory();
-        long mLibre = runtime.freeMemory();
-        long mMax = runtime.maxMemory();
-        long mUso = runtime.totalMemory() - runtime.freeMemory();
-        int mib = 1024 * 1024;
-        long mPorciento = mUso * 100 / mTotal;
 
         System.out.println("PROCESADORES");
         System.out.println("=".repeat(33));
         System.out.println("Disponibles JVM: " + procesadores);
         System.out.println("(son hilos lógicos: con SMT no coinciden con los núcleos físicos)");
         System.out.println();
+
+    }
+
+    public static void memoria() {
+
+        Runtime runtime = Runtime.getRuntime();
+
+        int mib = 1024 * 1024;
+
+        long mTotal = runtime.totalMemory();
+        long mLibre = runtime.freeMemory();
+        long mMax = runtime.maxMemory();
+        long mUso = runtime.totalMemory() - runtime.freeMemory();
+        long mPorciento = mUso * 100 / mTotal;
+
         System.out.println("MEMORIA · ANTES");
         System.out.println("=".repeat(33));
-        System.out.println("Total reservada: " + mTotal/mib + " MiB");
-        System.out.println("Libre:           " + mLibre/mib + " MiB");
-        System.out.println("En uso:          " + mUso/mib + " MiB (" + mPorciento + " % de la total)");
-        System.out.println("Máxima (-Xmx)    " + mMax/mib + " MiB");
+        System.out.println("Total reservada: " + mTotal / mib + " MiB");
+        System.out.println("Libre:           " + mLibre / mib + " MiB");
+        System.out.println("En uso:          " + mUso / mib + " MiB (" + mPorciento + " % de la total)");
+        System.out.println("Máxima (-Xmx)    " + mMax / mib + " MiB");
         System.out.println();
 
-        long[] reservado = new long[8 * 1024 * 1024]; // 8 M · 8 bytes = 64 MiB
+        long[] reservado = new long[8 * 1024 * 1024];
 
         long m2Total = runtime.totalMemory();
         long m2Libre = runtime.freeMemory();
@@ -39,13 +58,17 @@ public class InformeSistema {
 
         System.out.println("MEMORIA · DESPUÉS DE RESERVAR 64 MIB");
         System.out.println("=".repeat(33));
-        System.out.println("Total reservada: " + m2Total/mib + " MiB");
-        System.out.println("Libre:           " + m2Libre/mib + " MiB");
-        System.out.println("En uso:          " + m2Uso/mib + " MiB (" + m2Porciento + " % de la total)");
-        System.out.println("Máxima (-Xmx)    " + m2Max/mib + " MiB");
-        System.out.println("Incremento en uso: " + (m2Uso - mUso)/mib +" MiB");
-        System.out.println("(el array sigue en memoria: reservado[0] = "+reservado[0]+")");
+        System.out.println("Total reservada: " + m2Total / mib + " MiB");
+        System.out.println("Libre:           " + m2Libre / mib + " MiB");
+        System.out.println("En uso:          " + m2Uso / mib + " MiB (" + m2Porciento + " % de la total)");
+        System.out.println("Máxima (-Xmx)    " + m2Max / mib + " MiB");
+        System.out.println("Incremento en uso: " + (m2Uso - mUso) / mib + " MiB");
+        System.out.println("(el array sigue en memoria: reservado[0] = " + reservado[0] + ")");
         System.out.println();
+
+    }
+
+    public static void sistema() {
 
         String sOperativo = System.getProperty("os.name");
         String sSeparador = System.getProperty("file.separator");
@@ -56,8 +79,12 @@ public class InformeSistema {
         System.out.println("os.name:        " + sOperativo);
         System.out.println("file.separator: \"" + sSeparador + "\"");
         System.out.println("Ruta construida con las propiedades:");
-        System.out.println(sRuta + sSeparador + "InformeSistema.java");
+        System.out.println(sRuta + sSeparador + "psp/informe.txt");
         System.out.println();
+
+    }
+
+    public static void propiedades() {
 
         String javaVersion = System.getProperty("java.version");
         String javaVersionDate = System.getProperty("java.version.date");
@@ -84,16 +111,21 @@ public class InformeSistema {
         System.out.println("user.name = " + userName);
         System.out.println();
 
+    }
+
+    public static void procesoEspera() {
+
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("PROCESO EN ESPERA");
         System.out.println("=".repeat(33));
         System.out.println("Buscame desde otra terminal con:");
         System.out.println("ps -ef | grep InformeSistema");
         System.out.println("Pulsa INTRO para terminar...");
+
+        scanner.nextLine();
+
         System.out.println("Fin del programa.");
-
-
-
-
 
     }
 }
